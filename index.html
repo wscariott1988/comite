@@ -599,7 +599,7 @@
   </div>
 
   <script>
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/SEU_DEPLOY_ID/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPdA3qEQp-DxC4ZFMBzv_KRzEaX9Wjig99taeLgprUZ63MDvv7vgJAUOKrTAkwAGQ5OQ/exec';
     const MODO_DEMO = GOOGLE_SCRIPT_URL.includes('SEU_DEPLOY_ID');
     const BLOCOS_VALIDOS = Array.from({ length: 12 }, (_, indice) => `Bloco ${indice + 1}`);
     const APARTAMENTOS_VALIDOS = ['11', '12', '21', '22', '31', '32', '41', '42', '51', '52'];
@@ -806,25 +806,23 @@
         return;
       }
 
+      const statusUnidade = valorRadio('unidadeInfo');
       const payload = {
-        dataHora: new Date().toISOString(),
         nome: campo('nome').value.trim(),
         bloco: bloco.value,
         apartamento: apartamento.value,
-        unidade: `${bloco.value} - Apartamento ${apartamento.value}`,
         vinculo: campo('vinculo').value,
         whatsapp: whatsapp.value,
         email: campo('email').value.trim(),
         situacoes: marcados('situacoes'),
-        outros: campo('outrosTexto').value.trim(),
+        outros_texto: campo('outrosTexto').value.trim(),
         frequencia: valorRadio('frequencia'),
         periodos: marcados('periodos'),
-        comunicouFormalmente: valorRadio('comunicou'),
-        unidadeRelacionada: valorRadio('unidadeInfo'),
-        detalheConfidencial: valorRadio('unidadeInfo') === 'Sei qual é a unidade' || valorRadio('unidadeInfo') === 'Tenho suspeita, mas não certeza' ? campo('unidadeDetalhe').value.trim() : '',
+        comunicou: valorRadio('comunicou'),
+        unidade_status: statusUnidade,
+        unidade_detalhe: statusUnidade === 'Sei qual é a unidade' || statusUnidade === 'Tenho suspeita, mas não certeza' ? campo('unidadeDetalhe').value.trim() : '',
         participacao: marcados('participacao'),
-        consentimentoLGPD: campo('consentimento').checked,
-        origem: 'landing-page'
+        lgpd: campo('consentimento').checked
       };
 
       enviando = true;
