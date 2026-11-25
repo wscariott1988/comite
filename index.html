@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F172A">
+  <meta name="description" content="Comitê Independente de Moradores do Residencial Clube Brasil. Regras iguais para todos: fiscalização, transparência e respeito. Pesquisa de interesse em Novo Hamburgo/RS.">
+  <title>Comitê Independente de Moradores | Residencial Clube Brasil</title>
+  <link rel="icon" type="image/webp" href="./public/logo-cim.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tinta: '#0F172A',
+            tintaClara: '#1E293B',
+            papel: '#F8FAFC',
+            mostarda: '#B45309',
+            mostardaClaro: '#D97706',
+            esmeralda: '#065F46'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            titulo: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    dialog::backdrop { background: rgba(15, 23, 42, 0.72); backdrop-filter: blur(4px); }
+    .dialog-enter { animation: dialog-in 0.22s ease-out both; }
+    .fade-up { animation: fade-up 0.55s ease-out both; }
+    @keyframes dialog-in { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    .opcao:has(input:checked) { border-color: #065F46; background: #ECFDF5; }
+    .opcao:focus-within { outline: 2px solid #065F46; outline-offset: 2px; }
+    .invalido { border-color: #EF4444 !important; box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important; }
+    .spin { animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-up, .dialog-enter, .spin { animation: none; }
+    }
+  </style>
+</head>
+<body class="bg-papel text-tinta antialiased">
+
+  <div class="bg-tinta text-slate-200">
+    <div class="mx-auto flex max-w-7xl items-center justify-center gap-2 px-4 py-2 text-center text-[10px] font-semibold uppercase leading-snug tracking-[0.11em] sm:text-[11px]">
+      <span class="hidden h-1.5 w-1.5 shrink-0 rounded-full bg-mostardaClaro sm:block"></span>
+      INICIATIVA INDEPENDENTE E VOLUNTÁRIA DE MORADORES • SEM NENHUM VÍNCULO COM O SÍNDICO, A ADMINISTRAÇÃO OU A ADMINISTRADORA ADCON.
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <a href="#inicio" class="flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda">
+        <img src="./public/logo-cim.webp" alt="Logo do Comitê Independente de Moradores" class="h-10 w-10 shrink-0 rounded-full object-cover shadow-sm">
+        <span class="leading-tight">
+          <span class="block font-titulo text-[13px] font-bold text-tinta sm:text-sm">Comitê Independente</span>
+          <span class="block text-[9px] font-semibold uppercase tracking-[0.13em] text-slate-500 sm:text-[10px]">CLUBE BRASIL • NOVO HAMBURGO/RS</span>
+        </span>
+      </a>
+      <nav aria-label="Navegação principal" class="hidden items-center gap-7 text-sm font-medium text-slate-600 md:flex">
+        <a href="#regulamento" class="transition hover:text-esmeralda">Regulamento</a>
+        <a href="#pilares" class="transition hover:text-esmeralda">Nossa atuação</a>
+        <a href="#pesquisa" class="transition hover:text-esmeralda">Pesquisa</a>
+        <button type="button" data-modal="modalPrivacidade" class="transition hover:text-esmeralda">Privacidade</button>
+      </nav>
+      <a href="#pesquisa" class="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-esmeralda px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-[#044A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda focus-visible:ring-offset-2 sm:px-5 sm:text-sm">
+        Participar
+        <svg class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.69l-4.22-4.22a.75.75 0 1 1 1.06-1.06l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06l4.22-4.22H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="relative overflow-hidden border-b border-slate-200 bg-gradient-to-b from-white via-white to-papel">
+      <div class="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-esmeralda/5 blur-3xl"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-24">
+        <div class="fade-up">
+          <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[10px] font-bold uppercase leading-snug tracking-[0.12em] text-slate-600 shadow-sm sm:text-[11px]">
+            <span class="h-1.5 w-1.5 rounded-full bg-mostardaClaro"></span>
+            Iniciativa independente de moradores • Novo Hamburgo/RS
+          </span>
+          <h1 class="mt-6 font-titulo text-[2rem] font-extrabold leading-[1.12] tracking-tight text-tinta sm:text-4xl lg:text-[3.25rem]">
+            Regras iguais para todos. <span class="text-esmeralda">Fiscalização, transparência e respeito.</span>
+          </h1>
+          <p class="mt-5 max-w-2xl text-[15px] leading-relaxed text-slate-600 sm:text-lg">
+            O Regulamento Interno existe para ser cumprido — não ignorado. Moradores organizados pelo fim da seletividade nas regras, pela apuração real das reclamações e pelo direito básico ao sossego.
+          </p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a href="#pesquisa" class="inline-flex items-center justify-center gap-2 rounded-xl bg-esmeralda px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-esmeralda/20 transition hover:-translate-y-0.5 hover:bg-[#044A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda focus-visible:ring-offset-2">
+              Participar da pesquisa de interesse
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a.75.75 0 0 1 .75.75v10.69l4.22-4.22a.75.75 0 1 1 1.06 1.06l-5.5 5.5a.75.75 0 0 1-1.06 0l-5.5-5.5a.75.75 0 1 1 1.06-1.06l4.22 4.22V3.75A.75.75 0 0 1 10 3Z" clip-rule="evenodd"/></svg>
+            </a>
+            <a href="#regulamento" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-tinta transition hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda">
+              Conhecer as regras vigentes
+            </a>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs font-medium text-slate-500">
+            <span class="inline-flex items-center gap-1.5"><svg class="h-4 w-4 text-esmeralda" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.86-9.44a.75.75 0 0 0-1.22-.85l-3.28 3.43-1.86-1.86a.75.75 0 0 0-1.06 1.06l2.44 2.44a.75.75 0 0 0 1.08-.02l3.8-3.98a.75.75 0 0 0 .1-.22Z" clip-rule="evenodd"/></svg> Iniciativa 100% independente de moradores</span>
+            <span class="inline-flex items-center gap-1.5"><svg class="h-4 w-4 text-esmeralda" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.86-9.44a.75.75 0 0 0-1.22-.85l-3.28 3.43-1.86-1.86a.75.75 0 0 0-1.06 1.06l2.44 2.44a.75.75 0 0 0 1.08-.02l3.8-3.98a.75.75 0 0 0 .1-.22Z" clip-rule="evenodd"/></svg> Sem qualquer vínculo com o Síndico ou a Adcon</span>
+            <span class="inline-flex items-center gap-1.5"><svg class="h-4 w-4 text-esmeralda" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.86-9.44a.75.75 0 0 0-1.22-.85l-3.28 3.43-1.86-1.86a.75.75 0 0 0-1.06 1.06l2.44 2.44a.75.75 0 0 0 1.08-.02l3.8-3.98a.75.75 0 0 0 .1-.22Z" clip-rule="evenodd"/></svg> Privacidade e sigilo dos relatos (LGPD)</span>
+          </div>
+        </div>
+
+        <div class="fade-up lg:pl-4">
+          <figure class="rounded-2xl border border-slate-200 bg-white p-2.5 shadow-xl shadow-slate-900/10 sm:p-3">
+            <div class="aspect-[4/3] overflow-hidden rounded-xl bg-slate-100">
+              <img src="./public/portaria-clube-brasil.webp" alt="Entrada do Residencial Clube Brasil em Novo Hamburgo/RS, com a portaria e os portões laterais" class="h-full w-full object-contain" width="1200" height="900">
+            </div>
+            <figcaption class="flex flex-wrap items-center justify-between gap-2 px-2 pb-1 pt-3 text-[11px] text-slate-500 sm:px-3">
+              <span>Entrada do Residencial Clube Brasil — Novo Hamburgo/RS</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="regulamento" class="scroll-mt-24 bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-mostarda">O documento vigente</span>
+          <h2 class="mt-3 font-titulo text-2xl font-bold leading-tight tracking-tight text-tinta sm:text-3xl lg:text-4xl">O que o nosso Regulamento Interno já determina</h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-slate-600 sm:text-base">Não pedimos a criação de regras novas. Pedimos que as regras existentes sejam cumpridas, registradas e aplicadas de forma igualitária.</p>
+        </div>
+
+        <div class="mt-9 grid gap-5 md:grid-cols-3">
+          <article class="flex flex-col rounded-2xl border border-slate-200 bg-papel p-6 transition hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-center justify-between gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-tinta/5 text-tinta"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <span class="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 ring-1 ring-slate-200">Regra 1ª</span>
+            </div>
+            <h3 class="mt-5 font-titulo text-lg font-bold text-tinta">Horários de silêncio absoluto</h3>
+            <blockquote class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">“De acordo com a lei municipal em vigor, deve ser observado o horário de silêncio absoluto em todo o prédio, das 22h às 7h... Nos finais de semana, além desse horário, deverá ser mantido o silêncio no horário compreendido entre 12h e 15h, bem como nos feriados.”</blockquote>
+          </article>
+
+          <article class="flex flex-col rounded-2xl border border-slate-200 bg-papel p-6 transition hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-center justify-between gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-tinta/5 text-tinta"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5ZM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></span>
+              <span class="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 ring-1 ring-slate-200">Regra 1ª</span>
+            </div>
+            <h3 class="mt-5 font-titulo text-lg font-bold text-tinta">Limite de ruído fora do horário</h3>
+            <blockquote class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">“Fora desse horário, deve-se ter o cuidado e evitar que o barulho (música, conversas, etc.) ultrapasse as dependências do apartamento.”</blockquote>
+          </article>
+
+          <article class="flex flex-col rounded-2xl border border-slate-200 bg-papel p-6 transition hover:border-slate-300 hover:shadow-md">
+            <div class="flex items-center justify-between gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-tinta/5 text-tinta"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.2 8 9 4.6-.8 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span class="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 ring-1 ring-slate-200">Regra 31ª</span>
+            </div>
+            <h3 class="mt-5 font-titulo text-lg font-bold text-tinta">Advertência e multas progressivas</h3>
+            <blockquote class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">“A desobediência a qualquer dos itens deste regulamento ou da convenção do condomínio sujeitará o infrator e ou seu responsável legal, a uma advertência verbal ou por escrito, segundo a gravidade da mesma, e após a cobrança de multa de uma taxa condominial e o dobro por reincidência.”</blockquote>
+          </article>
+        </div>
+
+        <div class="mt-8 rounded-2xl border border-slate-200 bg-papel p-5 sm:p-6">
+          <h3 class="font-titulo text-lg font-bold leading-snug text-tinta">Amparo Legal — O Regulamento não se sobrepõe à Lei</h3>
+          <ol class="mt-5 grid gap-4 md:grid-cols-3">
+            <li class="rounded-xl border border-slate-200 bg-white p-4">
+              <p class="text-sm font-semibold leading-snug text-tinta">Código Civil Brasileiro (Art. 1.336, IV e Art. 1.348, IV)</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">Garante a todo morador o direito ao sossego, salubridade e segurança, e impõe ao síndico o dever legal de cumprir e fazer cumprir o regulamento interno e a convenção.</p>
+            </li>
+            <li class="rounded-xl border border-slate-200 bg-white p-4">
+              <p class="text-sm font-semibold leading-snug text-tinta">Lei das Contravenções Penais (Decreto-Lei 3.688/41, Art. 42)</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">Proíbe a perturbação do trabalho ou do sossego alheios por ruídos excessivos em qualquer horário do dia ou da noite.</p>
+            </li>
+            <li class="rounded-xl border border-slate-200 bg-white p-4">
+              <p class="text-sm font-semibold leading-snug text-tinta">Legislação Municipal de Novo Hamburgo/RS (Código de Posturas)</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">Conforme mencionado na própria Regra 1ª do Regulamento Interno, normas municipais coíbem ruídos que prejudiquem o descanso e a convivência da vizinhança.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="mt-8 flex flex-col items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 sm:flex-row sm:items-center">
+          <p class="text-sm text-slate-600"><span class="font-semibold text-tinta">Quer conferir na íntegra?</span> O documento completo está disponível para download.</p>
+          <a href="./public/regulamento-interno.pdf" download="Regulamento-Interno-Clube-Brasil.pdf" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-mostarda/40 bg-amber-50 px-5 py-3 text-sm font-semibold text-mostarda transition hover:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-mostarda sm:w-auto">
+            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10m0 0 3.5-3.5M10 13 6.5 9.5M4 15v1.5A1.5 1.5 0 0 0 5.5 18h9a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+            Baixar Regulamento Interno completo (PDF)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="pilares" class="scroll-mt-24 border-y border-slate-200 bg-papel py-14 sm:py-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-mostarda">Nossa atuação</span>
+          <h2 class="mt-3 font-titulo text-2xl font-bold leading-tight tracking-tight text-tinta sm:text-3xl lg:text-4xl">O que buscamos construir juntos</h2>
+          <p class="mt-4 text-[15px] leading-relaxed text-slate-600 sm:text-base">Quatro compromissos para transformar insatisfação em critério, registro e resultado — sempre dentro do que já está previsto.</p>
+        </div>
+
+        <div class="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <span class="font-titulo text-3xl font-extrabold text-esmeralda/25">01</span>
+            <h3 class="mt-3 font-titulo text-base font-bold leading-snug text-tinta">Protocolo e resposta formal</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Que toda reclamação individual formalizada receba protocolo, registro e retorno claro da administração dentro de prazo razoável.</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <span class="font-titulo text-3xl font-extrabold text-esmeralda/25">02</span>
+            <h3 class="mt-3 font-titulo text-base font-bold leading-snug text-tinta">Apuração individual de provas</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Separar o recebimento e apuração de ocorrências documentadas (áudio, vídeo, registros com data e hora) da aplicação de sanções, garantindo direito de defesa e critérios objetivos.</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <span class="font-titulo text-3xl font-extrabold text-esmeralda/25">03</span>
+            <h3 class="mt-3 font-titulo text-base font-bold leading-snug text-tinta">Isonomia sem seletividade</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Aplicação uniforme das regras em todas as unidades e áreas comuns — fim do tratamento desigual entre moradores.</p>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <span class="font-titulo text-3xl font-extrabold text-esmeralda/25">04</span>
+            <h3 class="mt-3 font-titulo text-base font-bold leading-snug text-tinta">Revisão democrática em assembleia</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-600">Se alguma regra atual não reflete mais a realidade do condomínio, que seja debatida e alterada pelo quórum formal em assembleia, e nunca ignorada no dia a dia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pesquisa" class="scroll-mt-20 bg-white py-14 sm:py-20">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <span class="text-[11px] font-bold uppercase tracking-[0.16em] text-mostarda">Pesquisa de interesse</span>
+          <h2 class="mt-3 font-titulo text-2xl font-bold leading-tight tracking-tight text-tinta sm:text-3xl lg:text-4xl">Manifeste seu interesse</h2>
+          <p class="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-slate-600 sm:text-base">Suas respostas ficam em ambiente restrito e protegido sob controle exclusivo da organização da iniciativa. Nenhum relato individual será publicado.</p>
+        </div>
+
+        <div class="mt-8 rounded-2xl border-l-4 border-mostarda bg-amber-50/70 p-4 sm:p-5">
+          <div class="flex gap-3">
+            <svg class="mt-0.5 h-5 w-5 shrink-0 text-mostarda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 2.6 17.3A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.7L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+            <p class="text-sm leading-relaxed text-amber-950"><strong>Aviso importante:</strong> esta é uma iniciativa inteiramente voluntária e independente de moradores, sem qualquer vínculo, autorização, parceria ou representação oficial do Condomínio Residencial Clube Brasil, de seu atual síndico ou da Adcon Administradora de Condomínios. Esta pesquisa não substitui o protocolo formal de reclamações.</p>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-2xl border border-slate-200 bg-papel p-4 text-sm leading-relaxed text-slate-600 sm:p-5">
+          <span class="font-semibold text-tinta">Tem dúvida antes de preencher?</span> Você pode escrever anonimamente, sem identificar sua unidade, para
+          <a href="mailto:comiteindependente.cb@gmail.com" class="font-semibold text-esmeralda underline decoration-esmeralda/30 underline-offset-2 hover:decoration-esmeralda">comiteindependente.cb@gmail.com</a>.
+        </div>
+
+        <div id="formWrapper" class="mt-8 rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-900/5 sm:p-8 lg:p-10">
+          <div id="erroGeral" role="alert" class="mb-6 hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700"></div>
+
+          <form id="formPesquisa" novalidate>
+            <fieldset>
+              <legend class="flex items-center gap-3 font-titulo text-lg font-bold text-tinta sm:text-xl">
+                <span class="grid h-8 w-8 place-items-center rounded-lg bg-tinta font-titulo text-sm font-bold text-white">1</span>
+                Identificação e vínculo com a unidade
+              </legend>
+              <div class="mt-6 grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label for="nome" class="mb-1.5 block text-sm font-semibold text-tinta">Nome completo <span class="text-mostarda">*</span></label>
+                  <input id="nome" name="nome" type="text" autocomplete="name" maxlength="120" placeholder="Como deseja ser identificado(a)" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-tinta outline-none transition placeholder:text-slate-400 focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                  <p data-error-for="nome" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="bloco" class="mb-1.5 block text-sm font-semibold text-tinta">Bloco <span class="text-mostarda">*</span></label>
+                  <select id="bloco" name="bloco" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-tinta outline-none transition focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                    <option value="">Selecione o bloco</option>
+                    <option value="Bloco 1">Bloco 1</option><option value="Bloco 2">Bloco 2</option><option value="Bloco 3">Bloco 3</option>
+                    <option value="Bloco 4">Bloco 4</option><option value="Bloco 5">Bloco 5</option><option value="Bloco 6">Bloco 6</option>
+                    <option value="Bloco 7">Bloco 7</option><option value="Bloco 8">Bloco 8</option><option value="Bloco 9">Bloco 9</option>
+                    <option value="Bloco 10">Bloco 10</option><option value="Bloco 11">Bloco 11</option><option value="Bloco 12">Bloco 12</option>
+                  </select>
+                  <p data-error-for="bloco" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="apartamento" class="mb-1.5 block text-sm font-semibold text-tinta">Apartamento <span class="text-mostarda">*</span></label>
+                  <select id="apartamento" name="apartamento" disabled class="w-full cursor-not-allowed rounded-xl border border-slate-300 bg-slate-100 px-4 py-3 text-sm text-slate-400 outline-none transition focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                    <option value="">Escolha um bloco primeiro</option>
+                    <option value="11">11</option><option value="12">12</option><option value="21">21</option><option value="22">22</option>
+                    <option value="31">31</option><option value="32">32</option><option value="41">41</option><option value="42">42</option>
+                    <option value="51">51</option><option value="52">52</option>
+                  </select>
+                  <p id="dicaApartamento" class="mt-1.5 text-xs text-slate-500">Disponível após escolher o bloco. Somente unidades existentes.</p>
+                  <p data-error-for="apartamento" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="vinculo" class="mb-1.5 block text-sm font-semibold text-tinta">Vínculo com a unidade <span class="text-mostarda">*</span></label>
+                  <select id="vinculo" name="vinculo" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-tinta outline-none transition focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                    <option value="">Selecione o vínculo</option>
+                    <option value="Proprietário(a)">Proprietário(a)</option>
+                    <option value="Inquilino(a)">Inquilino(a)</option>
+                    <option value="Outro vínculo (familiar/morador autorizado)">Outro vínculo (familiar/morador autorizado)</option>
+                  </select>
+                  <p data-error-for="vinculo" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="whatsapp" class="mb-1.5 block text-sm font-semibold text-tinta">WhatsApp para contato <span class="text-mostarda">*</span></label>
+                  <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="15" placeholder="(51) 99999-9999" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-tinta outline-none transition placeholder:text-slate-400 focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                  <p data-error-for="whatsapp" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+
+                <div>
+                  <label for="email" class="mb-1.5 block text-sm font-semibold text-tinta">E-mail <span class="font-normal text-slate-400">(opcional)</span></label>
+                  <input id="email" name="email" type="email" autocomplete="email" maxlength="160" placeholder="voce@exemplo.com" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-tinta outline-none transition placeholder:text-slate-400 focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                  <p data-error-for="email" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+              </div>
+            </fieldset>
+
+            <hr class="my-8 border-slate-200">
+
+            <fieldset>
+              <legend class="flex items-center gap-3 font-titulo text-lg font-bold text-tinta sm:text-xl">
+                <span class="grid h-8 w-8 place-items-center rounded-lg bg-tinta font-titulo text-sm font-bold text-white">2</span>
+                Situações, frequência e períodos
+              </legend>
+
+              <div class="mt-6">
+                <p class="text-sm font-semibold text-tinta">Quais situações você enfrenta ou observa no condomínio? <span class="text-mostarda">*</span></p>
+                <p class="mt-1 text-xs text-slate-500">Selecione uma ou mais opções.</p>
+                <div class="mt-3 grid gap-2.5 sm:grid-cols-2">
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Ruídos de impacto / batidas no piso" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Ruídos de impacto / batidas no piso</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Portas ou portões batendo com força" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Portas ou portões batendo com força</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Arrastamento de móveis" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Arrastamento de móveis</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Música, conversas, gritos ou outros ruídos excessivos" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Música, conversas, gritos ou outros ruídos excessivos</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Ruídos durante a noite ou madrugada" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Ruídos durante a noite ou madrugada</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Reformas ou instalações fora dos horários permitidos" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Reformas ou instalações fora dos horários permitidos</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Problemas de padronização ou uso nas áreas comuns / estacionamento" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Problemas de padronização ou uso nas áreas comuns / estacionamento</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Aplicação aparentemente desigual das regras ou falta de resposta da administração" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Aplicação aparentemente desigual das regras ou falta de resposta da administração</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Multas ou advertências sem procedimento claro ou oportunidade de esclarecimento" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Multas ou advertências sem procedimento claro ou oportunidade de esclarecimento</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="situacoes" value="Não enfrento problemas no momento, mas apoio a iniciativa" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Não enfrento problemas no momento, mas apoio a iniciativa</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300 sm:col-span-2"><input type="checkbox" name="situacoes" value="Outros" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Outros</label>
+                </div>
+                <p id="notaExclusividade" class="mt-2 hidden text-xs font-medium text-mostarda">Você marcou “Não enfrento problemas no momento, mas apoio a iniciativa” junto de outras situações. Se preferir, desmarque uma das opções para deixar sua resposta mais clara.</p>
+                <div id="outrosBox" class="mt-3 hidden">
+                  <label for="outrosTexto" class="mb-1.5 block text-sm font-semibold text-tinta">Quais outras situações? <span class="font-normal text-slate-400">(opcional)</span></label>
+                  <input id="outrosTexto" name="outrosTexto" type="text" maxlength="180" placeholder="Descreva brevemente" class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-tinta outline-none transition placeholder:text-slate-400 focus:border-esmeralda focus:ring-2 focus:ring-esmeralda/20">
+                  <p data-error-for="outrosTexto" class="mt-1.5 hidden text-xs font-medium text-red-600"></p>
+                </div>
+                <p data-error-for="situacoes" class="mt-2 hidden text-xs font-medium text-red-600"></p>
+              </div>
+
+              <div class="mt-7">
+                <p class="text-sm font-semibold text-tinta">Frequência das ocorrências <span class="text-mostarda">*</span></p>
+                <div class="mt-3 flex flex-wrap gap-2.5">
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="frequencia" value="Frequentemente" class="h-4 w-4 border-slate-300 accent-esmeralda"> Frequentemente</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="frequencia" value="Ocasionalmente" class="h-4 w-4 border-slate-300 accent-esmeralda"> Ocasionalmente</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="frequencia" value="Pontualmente" class="h-4 w-4 border-slate-300 accent-esmeralda"> Pontualmente</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="frequencia" value="Não se aplica" class="h-4 w-4 border-slate-300 accent-esmeralda"> Não se aplica</label>
+                </div>
+                <p data-error-for="frequencia" class="mt-2 hidden text-xs font-medium text-red-600"></p>
+              </div>
+
+              <div class="mt-7">
+                <p class="text-sm font-semibold text-tinta">Períodos em que ocorrem <span class="font-normal text-slate-400">(opcional)</span></p>
+                <p class="mt-1 text-xs text-slate-500">É possível selecionar mais de uma opção.</p>
+                <div class="mt-3 flex flex-wrap gap-2.5">
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="periodos" value="Manhã" class="h-4 w-4 rounded border-slate-300 accent-esmeralda"> Manhã</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="periodos" value="Tarde" class="h-4 w-4 rounded border-slate-300 accent-esmeralda"> Tarde</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="periodos" value="Noite" class="h-4 w-4 rounded border-slate-300 accent-esmeralda"> Noite</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="periodos" value="Madrugada" class="h-4 w-4 rounded border-slate-300 accent-esmeralda"> Madrugada</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="periodos" value="Horários variados" class="h-4 w-4 rounded border-slate-300 accent-esmeralda"> Horários variados</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="periodos" value="Não se aplica" class="h-4 w-4 rounded border-slate-300 accent-esmeralda"> Não se aplica</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <hr class="my-8 border-slate-200">
+
+            <fieldset>
+              <legend class="flex items-center gap-3 font-titulo text-lg font-bold text-tinta sm:text-xl">
+                <span class="grid h-8 w-8 place-items-center rounded-lg bg-tinta font-titulo text-sm font-bold text-white">3</span>
+                Comunicação formal e confidencialidade
+              </legend>
+
+              <div class="mt-6">
+                <p class="text-sm font-semibold text-tinta">Já comunicou formalmente à administração ou síndico? <span class="text-mostarda">*</span></p>
+                <div class="mt-3 flex flex-wrap gap-2.5">
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="comunicou" value="Sim, sem solução" class="h-4 w-4 border-slate-300 accent-esmeralda"> Sim, sem solução</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="comunicou" value="Sim, solução parcial" class="h-4 w-4 border-slate-300 accent-esmeralda"> Sim, solução parcial</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="comunicou" value="Sim, foi resolvido" class="h-4 w-4 border-slate-300 accent-esmeralda"> Sim, foi resolvido</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="comunicou" value="Não comuniquei" class="h-4 w-4 border-slate-300 accent-esmeralda"> Não comuniquei</label>
+                  <label class="opcao inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:border-slate-300"><input type="radio" name="comunicou" value="Não sei como registrar" class="h-4 w-4 border-slate-300 accent-esmeralda"> Não sei como registrar</label>
+                </div>
+                <p data-error-for="comunicou" class="mt-2 hidden text-xs font-medium text-red-600"></p>
+              </div>
+
+              <div class="mt-7">
+                <p class="text-sm font-semibold text-tinta">Existe alguma unidade relacionada ao problema? <span class="font-normal text-slate-400">(opcional e estritamente confidencial)</span></p>
+                <div class="mt-3 grid gap-2.5 sm:grid-cols-2">
+                  <label class="opcao flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="radio" name="unidadeInfo" value="Prefiro informar reservadamente no contato individual" class="mt-0.5 h-4 w-4 shrink-0 border-slate-300 accent-esmeralda"> Prefiro informar reservadamente no contato individual</label>
+                  <label class="opcao flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="radio" name="unidadeInfo" value="Sei qual é a unidade" class="mt-0.5 h-4 w-4 shrink-0 border-slate-300 accent-esmeralda"> Sei qual é a unidade</label>
+                  <label class="opcao flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="radio" name="unidadeInfo" value="Tenho suspeita, mas não certeza" class="mt-0.5 h-4 w-4 shrink-0 border-slate-300 accent-esmeralda"> Tenho suspeita, mas não certeza</label>
+                  <label class="opcao flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="radio" name="unidadeInfo" value="Não sei / Não se aplica" class="mt-0.5 h-4 w-4 shrink-0 border-slate-300 accent-esmeralda"> Não sei / Não se aplica</label>
+                </div>
+                <div id="unidadeDetalheBox" class="mt-4 hidden rounded-2xl border border-mostarda/30 bg-amber-50 p-4 sm:p-5">
+                  <div class="flex gap-3">
+                    <svg class="mt-0.5 h-5 w-5 shrink-0 text-mostarda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                    <div class="flex-1">
+                      <p class="text-sm font-semibold leading-relaxed text-amber-950">Informação estritamente confidencial: este dado será acessado apenas pela organização da pesquisa e jamais será divulgado publicamente ou sem sua expressa autorização.</p>
+                      <label for="unidadeDetalhe" class="mb-1.5 mt-3 block text-xs font-semibold text-amber-950">Se desejar, informe apenas bloco e apartamento <span class="font-normal">(opcional)</span></label>
+                      <input id="unidadeDetalhe" name="unidadeDetalhe" type="text" maxlength="120" placeholder="Ex.: bloco e apartamento relacionados" class="w-full rounded-xl border border-mostarda/30 bg-white px-4 py-3 text-sm text-tinta outline-none transition placeholder:text-slate-400 focus:border-mostarda focus:ring-2 focus:ring-mostarda/20">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <hr class="my-8 border-slate-200">
+
+            <fieldset>
+              <legend class="flex items-center gap-3 font-titulo text-lg font-bold text-tinta sm:text-xl">
+                <span class="grid h-8 w-8 place-items-center rounded-lg bg-tinta font-titulo text-sm font-bold text-white">4</span>
+                Participação e consentimento
+              </legend>
+
+              <div class="mt-6">
+                <p class="text-sm font-semibold text-tinta">Como você estaria disposto(a) a participar desta iniciativa? <span class="text-mostarda">*</span></p>
+                <p class="mt-1 text-xs text-slate-500">Selecione uma ou mais opções. O grupo privado de WhatsApp será criado mediante adesão suficiente de unidades distintas.</p>
+                <div class="mt-3 grid gap-2.5 sm:grid-cols-2">
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Apenas receber informações sobre a iniciativa" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Apenas receber informações sobre a iniciativa</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Participar de um grupo privado de WhatsApp (se houver adesão suficiente)" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Participar de um grupo privado de WhatsApp (se houver adesão suficiente)</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Relatar problemas e compartilhar registros/provas de forma responsável" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Relatar problemas e compartilhar registros/provas de forma responsável</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Apoiar reivindicações administrativas formais" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Apoiar reivindicações administrativas formais</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Assinar abaixo-assinado ou documentos coletivos" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Assinar abaixo-assinado ou documentos coletivos</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Participar de assembleias presencialmente, quando possível" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Participar de assembleias presencialmente, quando possível</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Ajudar a organizar a mobilização" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Ajudar a organizar a mobilização</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300"><input type="checkbox" name="participacao" value="Apoiar proposta de alteração ou aprimoramento do Regulamento Interno" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Apoiar proposta de alteração ou aprimoramento do Regulamento Interno</label>
+                  <label class="opcao flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-3.5 text-sm leading-snug text-slate-700 transition hover:border-slate-300 sm:col-span-2"><input type="checkbox" name="participacao" value="Avaliar participação em medida jurídica coletiva após orientação de advogado (sem compromisso nesta etapa)" class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda"> Avaliar participação em medida jurídica coletiva após orientação de advogado (sem compromisso nesta etapa)</label>
+                </div>
+                <p data-error-for="participacao" class="mt-2 hidden text-xs font-medium text-red-600"></p>
+              </div>
+
+              <div class="mt-7 rounded-2xl border border-slate-200 bg-papel p-4 sm:p-5">
+                <label class="flex items-start gap-3 text-sm leading-relaxed text-slate-700">
+                  <input id="consentimento" name="consentimento" type="checkbox" class="mt-1 h-4 w-4 shrink-0 rounded border-slate-300 accent-esmeralda">
+                  <span>
+                    <span class="font-semibold text-tinta">Termo de Ciência e Consentimento (LGPD) <span class="text-mostarda">*</span></span><br>
+                    Li e compreendi que esta é uma iniciativa inteiramente voluntária e independente de moradores, sem qualquer vínculo, autorização, parceria ou representação oficial do Condomínio Residencial Clube Brasil, de seu atual síndico ou da Adcon Administradora de Condomínios. Autorizo o armazenamento destes dados em ambiente restrito e protegido sob controle exclusivo da organização da iniciativa para validar meu vínculo com a unidade, realizar contato individual e avaliar a adesão, ciente de que relatos individuais e indicações de unidades jamais serão compartilhados sem minha expressa autorização.
+                    <button type="button" id="linkPrivacidadeConsentimento" data-modal="modalPrivacidade" class="mt-2 block font-semibold text-esmeralda underline decoration-esmeralda/40 underline-offset-2 hover:decoration-esmeralda">Ler Política de Privacidade e LGPD</button>
+                  </span>
+                </label>
+                <p data-error-for="consentimento" class="mt-2 hidden text-xs font-medium text-red-600"></p>
+              </div>
+            </fieldset>
+
+            <div class="mt-8 border-t border-slate-200 pt-6">
+              <button id="botaoEnviar" type="submit" class="inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-esmeralda px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-esmeralda/20 transition hover:bg-[#044A36] focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda focus-visible:ring-offset-2 disabled:cursor-wait disabled:opacity-70">
+                <svg id="spinnerEnvio" class="hidden h-4 w-4 spin" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity="0.25" stroke-width="3"/><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                <span id="textoEnviar">Enviar minha manifestação de interesse</span>
+              </button>
+              <p class="mt-3 text-center text-xs leading-relaxed text-slate-500">Os dados serão armazenados em ambiente restrito e protegido sob controle exclusivo da organização da iniciativa. Consulte a <button type="button" data-modal="modalPrivacidade" class="font-semibold text-esmeralda underline underline-offset-2">Política de Privacidade</button>.</p>
+            </div>
+          </form>
+        </div>
+
+        <div id="cartaoSucesso" class="mt-8 hidden rounded-3xl border border-esmeralda/20 bg-white p-8 text-center shadow-xl shadow-esmeralda/10 sm:p-12">
+          <div class="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald-50 text-esmeralda">
+            <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>
+          </div>
+          <h3 class="mt-6 font-titulo text-2xl font-bold text-tinta sm:text-3xl">Manifestação registrada com gratidão</h3>
+          <p class="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">Obrigado por participar. Seus dados ficarão em ambiente restrito e protegido sob controle exclusivo da organização da iniciativa e o contato individual será feito apenas quando houver adesão suficiente de unidades distintas.</p>
+          <div class="mx-auto mt-6 inline-flex flex-col items-center rounded-2xl border border-slate-200 bg-papel px-6 py-4">
+            <span class="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">Referência desta resposta</span>
+            <span id="referenciaEnvio" class="mt-1 font-titulo text-lg font-bold tracking-wide text-tinta"></span>
+            <span class="mt-1 text-[11px] text-slate-500">Não é um protocolo oficial do condomínio.</span>
+          </div>
+          <p id="notaDemo" class="mx-auto mt-5 hidden max-w-xl rounded-xl border border-mostarda/30 bg-amber-50 px-4 py-3 text-xs leading-relaxed text-amber-950">Configuração pendente: defina a constante GOOGLE_SCRIPT_URL no código para receber as respostas em ambiente restrito e protegido sob controle exclusivo da organização da iniciativa.</p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <button type="button" onclick="document.getElementById('inicio').scrollIntoView({behavior:'smooth'})" class="w-full rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-tinta transition hover:bg-slate-50 sm:w-auto">Voltar ao início</button>
+            <a href="./public/regulamento-interno.pdf" download="Regulamento-Interno-Clube-Brasil.pdf" class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-tinta px-6 py-3 text-sm font-semibold text-white transition hover:bg-tintaClara sm:w-auto">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10m0 0 3.5-3.5M10 13 6.5 9.5M4 15v1.5A1.5 1.5 0 0 0 5.5 18h9a1.5 1.5 0 0 0 1.5-1.5V15"/></svg>
+              Baixar regulamento (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-tinta text-slate-300">
+    <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="grid h-10 w-10 place-items-center rounded-lg bg-white font-titulo text-xs font-extrabold text-tinta">CI</span>
+            <span class="font-titulo text-base font-bold text-white">Comitê Independente de Moradores<br><span class="text-xs font-medium text-slate-400">Residencial Clube Brasil</span></span>
+          </div>
+          <p class="mt-5 max-w-xl text-sm leading-relaxed text-slate-400">Comitê Independente de Moradores do Residencial Clube Brasil — iniciativa inteiramente voluntária e independente de moradores (Novo Hamburgo/RS), sem qualquer vínculo, autorização, parceria ou representação oficial do Condomínio Residencial Clube Brasil, de seu atual síndico ou da Adcon Administradora de Condomínios.</p>
+        </div>
+        <div>
+          <h2 class="font-titulo text-sm font-bold uppercase tracking-wider text-white">Documentos</h2>
+          <ul class="mt-4 space-y-3 text-sm">
+            <li><button type="button" data-modal="modalPrivacidade" class="text-left transition hover:text-white hover:underline">Política de Privacidade (LGPD)</button></li>
+            <li><button type="button" data-modal="modalTermos" class="text-left transition hover:text-white hover:underline">Termos de Uso / Aviso de Cookies</button></li>
+            <li><a href="./public/regulamento-interno.pdf" download="Regulamento-Interno-Clube-Brasil.pdf" class="inline-block transition hover:text-white hover:underline">Regulamento Interno (PDF)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="font-titulo text-sm font-bold uppercase tracking-wider text-white">Contato</h2>
+          <p class="mt-4 text-sm leading-relaxed text-slate-400">Dúvidas antes do preenchimento — inclusive anônimas:</p>
+          <a href="mailto:comiteindependente.cb@gmail.com" class="mt-2 inline-block break-all text-sm font-semibold text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">comiteindependente.cb@gmail.com</a>
+          <p class="mt-5 text-xs leading-relaxed text-slate-500">Regras iguais para todos. Fiscalização, transparência e respeito.</p>
+        </div>
+      </div>
+      <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+        <span>© <span id="anoAtual">2026</span> Comitê Independente de Moradores — iniciativa voluntária, sem fins institucionais.</span>
+        <span>Novo Hamburgo/RS • Sem vínculo com o síndico ou a Adcon Administradora de Condomínios</span>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="modalPrivacidade" aria-labelledby="tituloPrivacidade" class="dialog-enter w-[calc(100%-1.5rem)] max-w-2xl rounded-2xl border border-slate-200 bg-white p-0 text-tinta shadow-2xl">
+    <div class="max-h-[88vh] overflow-y-auto">
+      <div class="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-slate-200 bg-white px-5 py-4 sm:px-7">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-mostarda">LGPD — Lei 13.709/2018</p>
+          <h2 id="tituloPrivacidade" class="mt-1 font-titulo text-lg font-bold sm:text-xl">Política de Privacidade e Proteção de Dados</h2>
+        </div>
+        <button type="button" data-close-modal class="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-tinta" aria-label="Fechar política de privacidade">
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg>
+        </button>
+      </div>
+      <div class="space-y-5 px-5 py-6 text-sm leading-relaxed text-slate-600 sm:px-7">
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Controlador / Responsável</h3>
+          <p class="mt-1">Comitê Independente de Moradores do Residencial Clube Brasil — iniciativa inteiramente voluntária e independente de moradores, sem personalidade jurídica e sem qualquer vínculo, autorização, parceria ou representação oficial do Condomínio Residencial Clube Brasil, de seu atual síndico ou da Adcon Administradora de Condomínios. Contato: <a href="mailto:comiteindependente.cb@gmail.com" class="font-semibold text-esmeralda underline">comiteindependente.cb@gmail.com</a>.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Finalidade exclusiva</h3>
+          <p class="mt-1">Verificar vínculo legítimo com uma das 120 unidades do condomínio, dimensionar a adesão por bloco/unidade e realizar contato individual prévio antes de eventual criação de grupo privado. Não há outra finalidade, nem uso comercial ou publicitário.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Armazenamento e segurança</h3>
+          <p class="mt-1">Os dados são armazenados em ambiente restrito e protegido sob controle exclusivo da organização da iniciativa, com acesso limitado por autenticação em duas etapas, sem compartilhamento comercial, publicitário ou divulgação pública em grupos.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Sigilo dos relatos</h3>
+          <p class="mt-1">Indicações de unidades ou relatos individuais não serão divulgados a terceiros nem incluídos em documentos coletivos sem autorização expressa do titular.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Direitos do titular</h3>
+          <p class="mt-1">Qualquer participante pode solicitar confirmação, correção ou exclusão definitiva de seus dados a qualquer momento pelo e-mail <a href="mailto:comiteindependente.cb@gmail.com" class="font-semibold text-esmeralda underline">comiteindependente.cb@gmail.com</a>.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Canal oficial</h3>
+          <p class="mt-1">Esta pesquisa é promovida por iniciativa inteiramente voluntária e independente, sem qualquer vínculo, autorização, parceria ou representação oficial do Condomínio Residencial Clube Brasil, de seu atual síndico ou da Adcon Administradora de Condomínios, e não substitui o protocolo formal de reclamações. O regulamento completo pode ser baixado na página e deve ser consultado para qualquer providência formal.</p>
+        </section>
+        <div class="rounded-xl bg-papel p-4 text-xs text-slate-500">Armazenamento técnico essencial é utilizado para o funcionamento da página e proteção contra envios duplicados. Caso o Pixel da Meta venha a ser ativado para mensuração do anúncio, será solicitada ciência específica antes de qualquer uso.</div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="modalTermos" aria-labelledby="tituloTermos" class="dialog-enter w-[calc(100%-1.5rem)] max-w-2xl rounded-2xl border border-slate-200 bg-white p-0 text-tinta shadow-2xl">
+    <div class="max-h-[88vh] overflow-y-auto">
+      <div class="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-slate-200 bg-white px-5 py-4 sm:px-7">
+        <div>
+          <p class="text-[10px] font-bold uppercase tracking-[0.14em] text-mostarda">Uso responsável</p>
+          <h2 id="tituloTermos" class="mt-1 font-titulo text-lg font-bold sm:text-xl">Termos de Uso / Aviso de Cookies</h2>
+        </div>
+        <button type="button" data-close-modal class="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-tinta" aria-label="Fechar termos de uso">
+          <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg>
+        </button>
+      </div>
+      <div class="space-y-5 px-5 py-6 text-sm leading-relaxed text-slate-600 sm:px-7">
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Natureza da iniciativa</h3>
+          <p class="mt-1">Este site é mantido por moradores como iniciativa inteiramente voluntária e independente, sem qualquer vínculo, autorização, parceria ou representação oficial do Condomínio Residencial Clube Brasil, de seu atual síndico ou da Adcon Administradora de Condomínios. Não usa logotipo institucional e não representa estas partes para qualquer efeito.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Uso das informações</h3>
+          <p class="mt-1">As informações publicadas são reproduções de regras vigentes e proporções de atuação. Relatos e indicações de unidades devem ser feitos de forma responsável, com descrições factuais, sem acusações, nomes ou exposição de pessoas.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Armazenamento técnico e cookies</h3>
+          <p class="mt-1">Este site utiliza apenas armazenamento técnico essencial para funcionamento da página, lembrar a ciência sobre cookies e proteger contra envios duplicados. Não há rastreamento publicitário invasivo. Se o Pixel da Meta for ativado para mensuração do anúncio, o uso será informado e dependerá da ciência do visitante.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Dados enviados no formulário</h3>
+          <p class="mt-1">As respostas são enviadas via Google Apps Script para ambiente restrito e protegido sob controle exclusivo da organização da iniciativa. Consulte a Política de Privacidade (LGPD) para finalidades, sigilo e direitos do titular.</p>
+        </section>
+        <section>
+          <h3 class="font-titulo font-bold text-tinta">Contato</h3>
+          <p class="mt-1">Dúvidas, correções ou exclusão de dados: <a href="mailto:comiteindependente.cb@gmail.com" class="font-semibold text-esmeralda underline">comiteindependente.cb@gmail.com</a>.</p>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="bannerCookies" role="region" aria-label="Aviso sobre cookies" class="fixed inset-x-0 bottom-0 z-50 hidden border-t border-slate-200 bg-white/95 p-4 shadow-[0_-8px_30px_rgba(15,23,42,0.08)] backdrop-blur">
+    <div class="mx-auto flex max-w-7xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-xs leading-relaxed text-slate-600 sm:max-w-4xl sm:text-sm">Este site utiliza apenas armazenamento técnico essencial para funcionamento da página e proteção contra envios duplicados, sem rastreamento publicitário invasivo. Ao continuar, você concorda com nossa Política de Privacidade. Caso o Pixel da Meta seja ativado para mensuração do anúncio, nova ciência será solicitada.</p>
+      <div class="flex shrink-0 flex-col gap-2 sm:flex-row">
+        <button type="button" id="entendiCookies" class="rounded-xl bg-tinta px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-tintaClara">Entendi</button>
+        <button type="button" data-modal="modalPrivacidade" class="rounded-xl border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-tinta transition hover:bg-slate-50">Ver Política de Privacidade</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/SEU_DEPLOY_ID/exec';
+    const MODO_DEMO = GOOGLE_SCRIPT_URL.includes('SEU_DEPLOY_ID');
+    const BLOCOS_VALIDOS = Array.from({ length: 12 }, (_, indice) => `Bloco ${indice + 1}`);
+    const APARTAMENTOS_VALIDOS = ['11', '12', '21', '22', '31', '32', '41', '42', '51', '52'];
+    const CHAVE_COOKIES = 'ci-cookie-consent';
+    const CHAVE_ULTIMO_ENVIO = 'ci-ultimo-envio';
+
+    const form = document.getElementById('formPesquisa');
+    const bloco = document.getElementById('bloco');
+    const apartamento = document.getElementById('apartamento');
+    const whatsapp = document.getElementById('whatsapp');
+    const botaoEnviar = document.getElementById('botaoEnviar');
+    const spinnerEnvio = document.getElementById('spinnerEnvio');
+    const textoEnviar = document.getElementById('textoEnviar');
+    const erroGeral = document.getElementById('erroGeral');
+    const outrosBox = document.getElementById('outrosBox');
+    const unidadeDetalheBox = document.getElementById('unidadeDetalheBox');
+    let enviando = false;
+
+    function campo(id) {
+      return document.getElementById(id);
+    }
+
+    function marcados(nome) {
+      return Array.from(form.querySelectorAll(`input[name="${nome}"]:checked`)).map((elemento) => elemento.value);
+    }
+
+    function valorRadio(nome) {
+      const selecionado = form.querySelector(`input[name="${nome}"]:checked`);
+      return selecionado ? selecionado.value : '';
+    }
+
+    function controles(nome) {
+      const elemento = campo(nome);
+      return elemento ? [elemento] : Array.from(form.querySelectorAll(`input[name="${nome}"]`));
+    }
+
+    function marcarErro(nome, mensagem) {
+      const erro = form.querySelector(`[data-error-for="${nome}"]`);
+      if (erro) {
+        erro.textContent = mensagem;
+        erro.classList.toggle('hidden', !mensagem);
+      }
+      controles(nome).forEach((elemento) => {
+        elemento.setAttribute('aria-invalid', mensagem ? 'true' : 'false');
+        elemento.classList.toggle('invalido', Boolean(mensagem));
+      });
+    }
+
+    function limparErros() {
+      form.querySelectorAll('[data-error-for]').forEach((erro) => {
+        erro.textContent = '';
+        erro.classList.add('hidden');
+      });
+      form.querySelectorAll('[aria-invalid]').forEach((elemento) => elemento.removeAttribute('aria-invalid'));
+      form.querySelectorAll('.invalido').forEach((elemento) => elemento.classList.remove('invalido'));
+      erroGeral.classList.add('hidden');
+    }
+
+    function formatarTelefone(valor) {
+      const digitosBrutos = valor.replace(/\D/g, '');
+      const digitos = (digitosBrutos.startsWith('51') || digitosBrutos.length > 9 ? digitosBrutos.slice(2) : digitosBrutos).slice(0, 9);
+      if (!digitos) return valor.trim() === '' ? '' : '(51) ';
+      return `(51) ${digitos.slice(0, 5)}${digitos.length > 5 ? '-' + digitos.slice(5) : ''}`;
+    }
+
+    function validar() {
+      const invalidos = [];
+      const exigir = (nome, ok, mensagem) => {
+        if (ok) {
+          marcarErro(nome, '');
+        } else {
+          marcarErro(nome, mensagem);
+          invalidos.push(nome);
+        }
+      };
+
+      exigir('nome', campo('nome').value.trim().length >= 3, 'Informe seu nome completo.');
+      const blocoValido = BLOCOS_VALIDOS.includes(bloco.value);
+      exigir('bloco', blocoValido, 'Selecione um bloco válido, de 1 a 12.');
+      exigir('apartamento', blocoValido && APARTAMENTOS_VALIDOS.includes(apartamento.value), blocoValido ? 'Selecione um apartamento existente na lista.' : 'Selecione o bloco antes do apartamento.');
+      exigir('vinculo', Boolean(campo('vinculo').value), 'Selecione seu vínculo com a unidade.');
+      exigir('whatsapp', /^\(51\) 9\d{4}-\d{4}$/.test(whatsapp.value), 'Informe o WhatsApp no formato (51) 99999-9999.');
+      const email = campo('email').value.trim();
+      exigir('email', !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email), 'Informe um e-mail válido ou deixe o campo em branco.');
+
+      const situacoes = marcados('situacoes');
+      exigir('situacoes', situacoes.length > 0, 'Selecione ao menos uma situação.');
+      exigir('frequencia', Boolean(valorRadio('frequencia')), 'Selecione a frequência das ocorrências.');
+      exigir('comunicou', Boolean(valorRadio('comunicou')), 'Informe se já comunicou formalmente à administração.');
+      exigir('participacao', marcados('participacao').length > 0, 'Selecione ao menos uma forma de participação.');
+      exigir('consentimento', campo('consentimento').checked, 'É necessário concordar com o termo para enviar.');
+      return invalidos;
+    }
+
+    function podeEnviar() {
+      try {
+        return Date.now() - Number(localStorage.getItem(CHAVE_ULTIMO_ENVIO) || 0) > 60000;
+      } catch (erro) {
+        return true;
+      }
+    }
+
+    function registrarEnvio() {
+      try {
+        localStorage.setItem(CHAVE_ULTIMO_ENVIO, String(Date.now()));
+      } catch (erro) {
+        return;
+      }
+    }
+
+    async function enviar(payload) {
+      if (MODO_DEMO) {
+        await new Promise((resolve) => setTimeout(resolve, 1200));
+        return;
+      }
+      const controlador = new AbortController();
+      const temporizador = setTimeout(() => controlador.abort(), 15000);
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload),
+          signal: controlador.signal
+        });
+      } finally {
+        clearTimeout(temporizador);
+      }
+    }
+
+    function gerarReferencia() {
+      const agora = new Date();
+      const data = `${agora.getFullYear()}${String(agora.getMonth() + 1).padStart(2, '0')}${String(agora.getDate()).padStart(2, '0')}`;
+      const aleatorio = new Uint32Array(1);
+      crypto.getRandomValues(aleatorio);
+      return `CI-${data}-${String(aleatorio[0] % 10000).padStart(4, '0')}`;
+    }
+
+    bloco.addEventListener('change', () => {
+      if (apartamento.dataset.bloco && apartamento.dataset.bloco !== bloco.value) apartamento.value = '';
+      apartamento.dataset.bloco = bloco.value;
+      apartamento.disabled = !bloco.value;
+      campo('dicaApartamento').textContent = bloco.value ? 'Somente apartamentos existentes neste bloco.' : 'Disponível após escolher o bloco. Somente unidades existentes.';
+      marcarErro('bloco', '');
+      marcarErro('apartamento', '');
+    });
+
+    whatsapp.addEventListener('focus', () => {
+      if (!whatsapp.value) whatsapp.value = '(51) ';
+    });
+    whatsapp.addEventListener('input', () => {
+      whatsapp.value = formatarTelefone(whatsapp.value);
+    });
+    whatsapp.addEventListener('blur', () => {
+      if (whatsapp.value === '(51) ') whatsapp.value = '';
+    });
+
+    form.addEventListener('input', (evento) => {
+      if (evento.target.name) marcarErro(evento.target.name, '');
+    });
+    form.addEventListener('change', (evento) => {
+      const nome = evento.target.name;
+      if (nome) marcarErro(nome, '');
+      if (nome === 'situacoes') {
+        const selecionadas = marcados('situacoes');
+        outrosBox.classList.toggle('hidden', !selecionadas.includes('Outros'));
+        const semProblemas = selecionadas.includes('Não enfrento problemas no momento, mas apoio a iniciativa');
+        campo('notaExclusividade').classList.toggle('hidden', !(semProblemas && selecionadas.length > 1));
+      }
+      if (nome === 'unidadeInfo') {
+        const detalhe = valorRadio('unidadeInfo');
+        unidadeDetalheBox.classList.toggle('hidden', !(detalhe === 'Sei qual é a unidade' || detalhe === 'Tenho suspeita, mas não certeza'));
+      }
+      if (nome === 'periodos' && evento.target.checked) {
+        const naoSeAplica = Array.from(form.querySelectorAll('input[name="periodos"]')).find((elemento) => elemento.value === 'Não se aplica');
+        if (evento.target.value === 'Não se aplica') {
+          Array.from(form.querySelectorAll('input[name="periodos"]')).forEach((elemento) => {
+            if (elemento !== evento.target) elemento.checked = false;
+          });
+        } else if (naoSeAplica) {
+          naoSeAplica.checked = false;
+        }
+      }
+    });
+
+    form.addEventListener('submit', async (evento) => {
+      evento.preventDefault();
+      if (enviando) return;
+      limparErros();
+      const invalidos = validar();
+      if (invalidos.length > 0) {
+        erroGeral.textContent = 'Revise os campos destacados antes de enviar sua manifestação.';
+        erroGeral.classList.remove('hidden');
+        const primeiro = controles(invalidos[0])[0];
+        if (primeiro) {
+          primeiro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(() => primeiro.focus({ preventScroll: true }), 250);
+        }
+        return;
+      }
+      if (!podeEnviar()) {
+        erroGeral.textContent = 'Você já enviou uma resposta recentemente. Aguarde alguns instantes antes de tentar novamente.';
+        erroGeral.classList.remove('hidden');
+        return;
+      }
+
+      const payload = {
+        dataHora: new Date().toISOString(),
+        nome: campo('nome').value.trim(),
+        bloco: bloco.value,
+        apartamento: apartamento.value,
+        unidade: `${bloco.value} - Apartamento ${apartamento.value}`,
+        vinculo: campo('vinculo').value,
+        whatsapp: whatsapp.value,
+        email: campo('email').value.trim(),
+        situacoes: marcados('situacoes'),
+        outros: campo('outrosTexto').value.trim(),
+        frequencia: valorRadio('frequencia'),
+        periodos: marcados('periodos'),
+        comunicouFormalmente: valorRadio('comunicou'),
+        unidadeRelacionada: valorRadio('unidadeInfo'),
+        detalheConfidencial: valorRadio('unidadeInfo') === 'Sei qual é a unidade' || valorRadio('unidadeInfo') === 'Tenho suspeita, mas não certeza' ? campo('unidadeDetalhe').value.trim() : '',
+        participacao: marcados('participacao'),
+        consentimentoLGPD: campo('consentimento').checked,
+        origem: 'landing-page'
+      };
+
+      enviando = true;
+      botaoEnviar.disabled = true;
+      botaoEnviar.setAttribute('aria-busy', 'true');
+      spinnerEnvio.classList.remove('hidden');
+      textoEnviar.textContent = 'Enviando sua manifestação...';
+
+      try {
+        await enviar(payload);
+        registrarEnvio();
+        campo('referenciaEnvio').textContent = gerarReferencia();
+        campo('notaDemo').classList.toggle('hidden', !MODO_DEMO);
+        campo('formWrapper').classList.add('hidden');
+        const sucesso = campo('cartaoSucesso');
+        sucesso.classList.remove('hidden');
+        sucesso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (erro) {
+        erroGeral.textContent = 'Não foi possível enviar agora. Tente novamente em instantes ou escreva para comiteindependente.cb@gmail.com.';
+        erroGeral.classList.remove('hidden');
+        erroGeral.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } finally {
+        enviando = false;
+        botaoEnviar.disabled = false;
+        botaoEnviar.removeAttribute('aria-busy');
+        spinnerEnvio.classList.add('hidden');
+        textoEnviar.textContent = 'Enviar minha manifestação de interesse';
+      }
+    });
+
+    function abrirModal(id) {
+      const modal = document.getElementById(id);
+      if (modal && typeof modal.showModal === 'function') modal.showModal();
+    }
+
+    document.querySelectorAll('[data-modal]').forEach((botao) => {
+      botao.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        evento.stopPropagation();
+        abrirModal(botao.dataset.modal);
+      });
+    });
+    document.querySelectorAll('[data-close-modal]').forEach((botao) => {
+      botao.addEventListener('click', () => botao.closest('dialog').close());
+    });
+    document.querySelectorAll('dialog').forEach((modal) => {
+      modal.addEventListener('click', (evento) => {
+        if (!modal.firstElementChild.contains(evento.target)) modal.close();
+      });
+    });
+
+    const bannerCookies = campo('bannerCookies');
+    function aceitarCookies() {
+      try {
+        localStorage.setItem(CHAVE_COOKIES, 'aceite');
+      } catch (erro) {
+        return;
+      }
+      bannerCookies.classList.add('hidden');
+    }
+    campo('entendiCookies').addEventListener('click', aceitarCookies);
+    try {
+      if (!localStorage.getItem(CHAVE_COOKIES)) setTimeout(() => bannerCookies.classList.remove('hidden'), 900);
+    } catch (erro) {
+      setTimeout(() => bannerCookies.classList.remove('hidden'), 900);
+    }
+    campo('anoAtual').textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
